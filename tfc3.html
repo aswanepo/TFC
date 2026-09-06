@@ -3,55 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="description" content="Time-Field Chrono Dynamics: A Theory Where Gravity is Inhomogeneous Time-Flow" />
-    <title>Time-Field Chrono Dynamics Laboratory</title>
+    <title>Time-Field Chrono Dynamics · 3D Laboratory</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
     <style>
-        /* ============================================================
-           ROOT VARIABLES — DARK THEME, CYAN ACCENT
-           ============================================================ */
-        :root {
-            --bg-primary: #05070a;
-            --bg-secondary: #0d1117;
-            --bg-panel: rgba(13, 17, 23, 0.88);
-            --bg-glass: rgba(13, 17, 23, 0.75);
-            --accent: #00d4ff;
-            --accent-dim: rgba(0, 212, 255, 0.12);
-            --accent-glow: rgba(0, 212, 255, 0.30);
-            --text-primary: #e6edf3;
-            --text-secondary: #8b949e;
-            --text-muted: #484f58;
-            --border-color: #21262d;
-            --border-glow: rgba(0, 212, 255, 0.15);
-            --danger: #ff3366;
-            --danger-dim: rgba(255, 51, 102, 0.15);
-            --success: #00ff9d;
-            --warning: #ffd700;
-            --radius-sm: 4px;
-            --radius-md: 8px;
-            --radius-lg: 12px;
-            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.6);
-            --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.15);
-            --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-med: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            --font-display: 'Orbitron', monospace;
-            --font-body: 'Exo 2', 'Segoe UI', system-ui, sans-serif;
-            --font-mono: 'Share Tech Mono', 'Courier New', monospace;
-            --z-grid: -10;
-            --z-base: 1;
-            --z-panel: 10;
-            --z-overlay: 50;
-            --z-modal: 100;
-            --z-toast: 200;
-        }
-
-        /* ============================================================
-           RESET & BASE
-           ============================================================ */
+        /* ─── Reset & Variables ─── */
         *,
         *::before,
         *::after {
@@ -60,64 +18,37 @@
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
-
-        html {
-            font-size: 14px;
-            height: 100%;
-            overflow: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+        :root {
+            --bg-primary: #05070a;
+            --bg-secondary: #0d1117;
+            --bg-panel: rgba(13, 17, 23, 0.88);
+            --accent: #00d4ff;
+            --accent-dim: rgba(0, 212, 255, 0.12);
+            --accent-glow: rgba(0, 212, 255, 0.30);
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --border-color: #21262d;
+            --border-glow: rgba(0, 212, 255, 0.15);
+            --danger: #ff3366;
+            --font-display: 'Orbitron', monospace;
+            --font-body: 'Exo 2', 'Segoe UI', system-ui, sans-serif;
+            --font-mono: 'Share Tech Mono', 'Courier New', monospace;
+            --radius: 6px;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+            --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         body {
-            font-family: var(--font-body);
             background: var(--bg-primary);
             color: var(--text-primary);
-            height: 100%;
+            font-family: var(--font-body);
+            height: 100vh;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             line-height: 1.6;
         }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: var(--font-display);
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.02em;
-        }
-        h1 {
-            font-size: 1.15rem;
-        }
-        h2 {
-            font-size: 1rem;
-        }
-        h3 {
-            font-size: 0.9rem;
-            margin-top: 0.4rem;
-        }
-        h4 {
-            font-size: 0.8rem;
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* ============================================================
-           SCROLLBAR
-           ============================================================ */
         ::-webkit-scrollbar {
             width: 4px;
-            height: 4px;
         }
         ::-webkit-scrollbar-track {
             background: transparent;
@@ -130,178 +61,45 @@
             background: var(--accent);
         }
 
-        /* ============================================================
-           CYBER GRID
-           ============================================================ */
-        .cyber-grid {
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(0, 212, 255, 0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 212, 255, 0.025) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none;
-            z-index: var(--z-grid);
-        }
-
-        /* ============================================================
-           LOADING OVERLAY
-           ============================================================ */
-        .loading-overlay {
-            position: fixed;
-            inset: 0;
-            background: var(--bg-primary);
-            z-index: var(--z-modal);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.45s ease, visibility 0.45s ease;
-        }
-        .loading-overlay.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-        .loading-icon {
-            width: 52px;
-            height: 52px;
-            background: var(--accent);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 1.6rem;
-            color: var(--bg-primary);
-            animation: pulse-icon 2s ease-in-out infinite;
-            box-shadow: 0 0 40px var(--accent-glow);
-        }
-        @keyframes pulse-icon {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.06);
-            }
-        }
-        .loading-text {
-            margin: 1.5rem 0 1rem;
-            font-family: var(--font-display);
-            color: var(--accent);
-            font-size: 0.85rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            text-align: center;
-            padding: 0 1rem;
-        }
-        .loading-progress {
-            width: min(220px, 70vw);
-            height: 2px;
-            background: rgba(0, 212, 255, 0.12);
-            border-radius: 1px;
-            overflow: hidden;
-        }
-        .loading-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), #6a0dad);
-            width: 0%;
-            transition: width 0.25s ease;
-        }
-
-        /* ============================================================
-           DASHBOARD LAYOUT
-           ============================================================ */
-        .dashboard {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            grid-template-rows: 56px 1fr;
-            grid-template-areas:
-                "header header"
-                "left middle";
-            height: 100vh;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        /* ---- HEADER ---- */
+        /* ─── Header ─── */
         .dashboard-header {
-            grid-area: header;
             background: var(--bg-secondary);
             border-bottom: 1px solid var(--border-color);
-            padding: 0 1rem;
+            padding: 0 1.2rem;
+            height: 56px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 0.75rem;
-            z-index: var(--z-panel);
+            flex-shrink: 0;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+            z-index: 10;
         }
         .logo {
             display: flex;
             align-items: center;
             gap: 0.6rem;
             font-family: var(--font-display);
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             color: var(--accent);
-            white-space: nowrap;
+            letter-spacing: 0.04em;
         }
         .logo-icon {
             width: 32px;
             height: 32px;
             background: linear-gradient(135deg, var(--accent), #6a0dad);
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: var(--bg-primary);
             flex-shrink: 0;
         }
-        .logo span {
-            letter-spacing: 0.04em;
-        }
-        .logo .sub {
-            font-family: var(--font-body);
-            font-weight: 300;
-            color: var(--text-secondary);
-            font-size: 0.55rem;
-            letter-spacing: 0.08em;
-            opacity: 0.7;
-            display: none;
-        }
-
-        .header-stats {
+        .header-actions {
             display: flex;
-            gap: 1.2rem;
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-        }
-        .header-stats .stat-item {
-            display: flex;
-            gap: 0.3rem;
-            align-items: center;
-            cursor: help;
-            padding: 0.15rem 0.4rem;
-            border-radius: var(--radius-sm);
-            transition: var(--transition-fast);
-        }
-        .header-stats .stat-item:hover {
-            background: var(--accent-dim);
-        }
-        .header-stats .stat-value {
-            color: var(--accent);
-            font-weight: 700;
-            font-family: var(--font-mono);
-        }
-
-        .header-controls {
-            display: flex;
-            gap: 0.4rem;
-            flex-shrink: 0;
+            gap: 0.5rem;
         }
         .icon-btn {
             width: 34px;
@@ -309,40 +107,61 @@
             background: transparent;
             border: 1px solid var(--border-color);
             color: var(--text-secondary);
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition-fast);
-            font-size: 0.85rem;
+            transition: var(--transition);
+            font-size: 0.9rem;
         }
         .icon-btn:hover {
             border-color: var(--accent);
             color: var(--accent);
             background: var(--accent-dim);
-            transform: translateY(-1px);
         }
-        .icon-btn:active {
-            transform: translateY(0) scale(0.95);
+        .header-stats {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+        .header-stats .stat-item {
+            display: flex;
+            gap: 0.3rem;
+            align-items: center;
+        }
+        .header-stats .stat-value {
+            color: var(--accent);
+            font-weight: 700;
+            font-family: var(--font-mono);
         }
 
-        /* ---- LEFT PANEL ---- */
-        .left-panel {
-            grid-area: left;
+        /* ─── Main Layout ─── */
+        .dashboard {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        /* ─── Sidebar ─── */
+        .sidebar {
+            width: 300px;
+            min-width: 300px;
             background: var(--bg-secondary);
             border-right: 1px solid var(--border-color);
-            padding: 0.75rem;
+            padding: 1rem;
             overflow-y: auto;
-            z-index: var(--z-panel);
+            flex-shrink: 0;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
         .panel-section {
             background: rgba(0, 0, 0, 0.30);
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
+            border-radius: var(--radius);
             padding: 0.75rem;
             margin-bottom: 0.75rem;
-            transition: var(--transition-fast);
+            transition: var(--transition);
         }
         .panel-section:hover {
             border-color: var(--border-glow);
@@ -350,30 +169,29 @@
         .section-title {
             font-family: var(--font-display);
             color: var(--accent);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.6rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.35rem;
         }
         .section-title i {
-            margin-right: 0.4rem;
-            font-size: 0.7rem;
+            margin-right: 0.3rem;
             opacity: 0.7;
         }
         .study-link {
             color: var(--text-secondary);
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             cursor: pointer;
             background: none;
             border: none;
             padding: 0;
             font-family: inherit;
-            transition: var(--transition-fast);
+            transition: var(--transition);
             opacity: 0.5;
         }
         .study-link:hover {
@@ -382,7 +200,7 @@
         }
 
         .slider-group {
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
         }
         .slider-group:last-child {
             margin-bottom: 0;
@@ -392,7 +210,7 @@
             justify-content: space-between;
             font-size: 0.7rem;
             color: var(--text-secondary);
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.15rem;
         }
         .slider-value {
             color: var(--accent);
@@ -402,7 +220,6 @@
             min-width: 2.2rem;
             text-align: right;
         }
-
         input[type="range"] {
             width: 100%;
             height: 3px;
@@ -411,10 +228,7 @@
             -webkit-appearance: none;
             appearance: none;
             outline: none;
-            transition: var(--transition-fast);
-        }
-        input[type="range"]:hover {
-            background: var(--border-glow);
+            transition: var(--transition);
         }
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
@@ -425,10 +239,6 @@
             cursor: pointer;
             border: 2px solid var(--bg-primary);
             box-shadow: 0 0 12px var(--accent-glow);
-            transition: var(--transition-fast);
-        }
-        input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.15);
         }
         input[type="range"]::-moz-range-thumb {
             width: 14px;
@@ -439,34 +249,29 @@
             border: 2px solid var(--bg-primary);
             box-shadow: 0 0 12px var(--accent-glow);
         }
-
         .btn {
             background: transparent;
             color: var(--accent);
             border: 1px solid var(--accent);
             padding: 0.3rem 0.7rem;
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius);
             cursor: pointer;
             font-family: var(--font-body);
-            font-size: 0.7rem;
-            font-weight: 500;
-            transition: var(--transition-fast);
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            transition: var(--transition);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.35rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            white-space: nowrap;
+            gap: 0.3rem;
         }
         .btn:hover {
             background: var(--accent);
             color: var(--bg-primary);
             box-shadow: 0 0 20px var(--accent-glow);
             transform: translateY(-1px);
-        }
-        .btn:active {
-            transform: translateY(0) scale(0.97);
         }
         .btn-primary {
             background: var(--accent);
@@ -475,7 +280,6 @@
         }
         .btn-primary:hover {
             background: #00e6ff;
-            box-shadow: 0 0 28px var(--accent-glow);
         }
         .btn-secondary {
             background: #6a0dad;
@@ -485,57 +289,40 @@
         .btn-secondary:hover {
             background: #8a2be2;
             border-color: #8a2be2;
-            box-shadow: 0 0 28px rgba(106, 13, 173, 0.5);
-            color: #fff;
-        }
-        .btn-danger {
-            border-color: var(--danger);
-            color: var(--danger);
-        }
-        .btn-danger:hover {
-            background: var(--danger);
-            color: var(--bg-primary);
-            box-shadow: 0 0 24px rgba(255, 51, 102, 0.4);
+            box-shadow: 0 0 24px rgba(106, 13, 173, 0.4);
         }
         .btn-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0.3rem;
-            margin-top: 0.5rem;
+            margin-top: 0.3rem;
         }
-        .btn-group .btn {
-            font-size: 0.6rem;
-            padding: 0.25rem 0.4rem;
-        }
-
-        /* ---- THEORY CARDS ---- */
         .theory-grid {
             display: grid;
-            gap: 0.4rem;
+            gap: 0.3rem;
         }
         .theory-card {
             background: rgba(0, 0, 0, 0.25);
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            padding: 0.4rem 0.5rem;
+            border-radius: var(--radius);
+            padding: 0.3rem 0.5rem;
             cursor: pointer;
-            transition: var(--transition-fast);
+            transition: var(--transition);
         }
         .theory-card:hover {
             border-color: var(--accent);
             background: var(--accent-dim);
-            transform: translateY(-1px);
         }
         .theory-card h4 {
             font-size: 0.7rem;
-            margin-bottom: 0.1rem;
+            margin: 0;
             display: flex;
             align-items: center;
             gap: 0.3rem;
             color: var(--accent);
         }
         .theory-card p {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             opacity: 0.7;
             margin: 0;
             color: var(--text-secondary);
@@ -543,89 +330,39 @@
         .equation-box {
             background: rgba(0, 0, 0, 0.40);
             border-left: 2px solid var(--accent);
-            padding: 0.25rem 0.5rem;
-            margin: 0.2rem 0;
+            padding: 0.15rem 0.4rem;
+            margin: 0.15rem 0;
             font-family: var(--font-mono);
-            font-size: 0.7rem;
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.65rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            color: var(--text-secondary);
             overflow-x: auto;
             white-space: pre-wrap;
             word-break: break-word;
-            cursor: pointer;
-            color: var(--text-secondary);
-            transition: var(--transition-fast);
-        }
-        .equation-box:hover {
-            background: rgba(0, 0, 0, 0.50);
-            border-left-color: #6a0dad;
         }
 
-        /* ---- RIGHT PANEL (hidden by default, toggled) ---- */
-        .right-panel {
-            display: none;
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 380px;
-            height: 100%;
-            background: var(--bg-glass);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-left: 1px solid var(--border-color);
-            padding: 1rem;
-            overflow-y: auto;
-            z-index: var(--z-overlay);
-            transform: translateX(110%);
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .right-panel.active {
-            display: block;
-            transform: translateX(0);
-        }
-        .panel-close {
-            position: absolute;
-            top: 0.6rem;
-            right: 0.6rem;
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: var(--transition-fast);
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .panel-close:hover {
-            color: var(--accent);
-            background: var(--accent-dim);
-        }
-
-        /* ---- MIDDLE PANEL (simulation) ---- */
-        .middle-panel {
-            grid-area: middle;
+        /* ─── Viewport ─── */
+        .viewport {
+            flex: 1;
             position: relative;
-            overflow: hidden;
             background: var(--bg-primary);
+            overflow: hidden;
         }
         #simulation-container {
             width: 100%;
             height: 100%;
             touch-action: none;
         }
-        .simulation-overlay {
+        .sim-overlay {
             position: absolute;
             inset: 0;
             pointer-events: none;
+            padding: 0.5rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 0.5rem;
         }
-        .simulation-controls {
+        .sim-controls {
             pointer-events: all;
             display: flex;
             flex-wrap: wrap;
@@ -633,23 +370,22 @@
             align-self: flex-end;
             max-width: 220px;
         }
-        .simulation-controls .btn {
-            font-size: 0.6rem;
-            padding: 0.2rem 0.5rem;
-            background: rgba(13, 17, 23, 0.70);
+        .sim-controls .btn {
+            font-size: 0.55rem;
+            padding: 0.15rem 0.45rem;
+            background: rgba(13, 17, 23, 0.7);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             border-color: var(--border-color);
         }
-        .simulation-controls .btn:hover {
+        .sim-controls .btn:hover {
             border-color: var(--accent);
         }
-        .simulation-stats {
+        .sim-stats {
             pointer-events: all;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0.3rem;
-            margin-top: auto;
             max-width: 480px;
         }
         .stat-card {
@@ -657,17 +393,15 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius);
             padding: 0.3rem 0.5rem;
-            cursor: help;
-            transition: var(--transition-fast);
+            transition: var(--transition);
         }
         .stat-card:hover {
             border-color: var(--accent);
-            background: rgba(13, 17, 23, 0.90);
         }
         .stat-card .stat-label {
-            font-size: 0.55rem;
+            font-size: 0.5rem;
             text-transform: uppercase;
             opacity: 0.5;
             letter-spacing: 0.06em;
@@ -675,20 +409,19 @@
         }
         .stat-card .stat-value {
             font-family: var(--font-display);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--accent);
             font-weight: 600;
-            line-height: 1.3;
         }
 
-        /* ---- STUDY PANEL (modal) ---- */
+        /* ─── STUDY PANEL (modal) ─── */
         .study-panel {
             position: fixed;
             inset: 0;
             background: rgba(5, 7, 10, 0.97);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            z-index: var(--z-modal);
+            z-index: 100;
             overflow-y: auto;
             padding: 1.5rem;
             display: none;
@@ -732,7 +465,7 @@
             border-radius: 50%;
             font-size: 1.2rem;
             cursor: pointer;
-            transition: var(--transition-fast);
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -764,7 +497,7 @@
             padding: 0.5rem 0.7rem;
             margin: 0.4rem 0;
             font-family: var(--font-mono);
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
             overflow-x: auto;
             white-space: pre-wrap;
             word-break: break-word;
@@ -775,17 +508,17 @@
             background: var(--accent-dim);
             border: 1px solid var(--accent);
             padding: 0.5rem;
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius);
             margin: 0.4rem 0;
             font-style: italic;
             font-size: 0.85rem;
             color: var(--text-secondary);
         }
         .study-warning {
-            background: var(--danger-dim);
+            background: rgba(255, 51, 102, 0.10);
             border: 1px solid var(--danger);
             padding: 0.5rem;
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius);
             margin: 0.4rem 0;
             font-style: italic;
             font-size: 0.85rem;
@@ -801,7 +534,7 @@
             margin-bottom: 0.3rem;
         }
 
-        /* ---- MOBILE MENU ---- */
+        /* ─── Mobile Menu ─── */
         .mobile-menu {
             display: none;
             position: fixed;
@@ -809,18 +542,18 @@
             left: 50%;
             transform: translateX(-50%);
             gap: 0.5rem;
-            z-index: var(--z-panel);
+            z-index: 20;
             background: rgba(13, 17, 23, 0.80);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            padding: 0.4rem 0.6rem;
+            padding: 0.3rem 0.5rem;
             border-radius: 40px;
             border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-card);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
         }
-        .mobile-menu-btn {
-            width: 42px;
-            height: 42px;
+        .mobile-btn {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: transparent;
             border: 1px solid var(--border-color);
@@ -828,76 +561,54 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: var(--transition-fast);
+            transition: var(--transition);
         }
-        .mobile-menu-btn:hover {
+        .mobile-btn:hover {
             border-color: var(--accent);
             color: var(--accent);
         }
-        .mobile-menu-btn.active {
+        .mobile-btn.active {
             background: var(--accent);
             color: var(--bg-primary);
             border-color: var(--accent);
         }
-        .mobile-menu-btn.btn-primary {
+        .mobile-btn.primary {
             background: var(--accent);
             color: var(--bg-primary);
             border: none;
         }
-        .mobile-menu-btn.btn-primary:hover {
-            box-shadow: 0 0 24px var(--accent-glow);
-        }
 
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
+        /* ─── Responsive ─── */
         @media (max-width: 1024px) {
-            .dashboard {
-                grid-template-columns: 280px 1fr;
-            }
-            .right-panel {
-                width: 340px;
+            .sidebar {
+                width: 260px;
+                min-width: 260px;
             }
             .header-stats .stat-item:nth-child(3) {
                 display: none;
             }
         }
-
         @media (max-width: 768px) {
             .dashboard {
-                grid-template-columns: 1fr;
-                grid-template-rows: 52px 1fr;
-                grid-template-areas:
-                    "header"
-                    "middle";
+                flex-direction: column;
             }
-            .left-panel {
+            .sidebar {
                 position: fixed;
                 top: 0;
                 left: -100%;
                 width: 280px;
                 height: 100%;
-                z-index: var(--z-overlay);
+                z-index: 30;
                 transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 border-right: 1px solid var(--border-color);
                 background: var(--bg-secondary);
-                padding: 1rem 0.75rem;
+                padding: 1rem;
                 overflow-y: auto;
             }
-            .left-panel.active {
+            .sidebar.active {
                 left: 0;
-            }
-            .right-panel {
-                width: 100%;
-                max-width: 100%;
-                right: 0;
-                transform: translateX(110%);
-                padding: 1rem;
-            }
-            .right-panel.active {
-                transform: translateX(0);
             }
             .mobile-menu {
                 display: flex;
@@ -905,404 +616,190 @@
             .header-stats {
                 display: none;
             }
-            .logo .sub {
-                display: inline;
-            }
-            .simulation-stats {
+            .sim-stats {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 0.2rem;
             }
-            .stat-card .stat-value {
-                font-size: 0.7rem;
-            }
-            .stat-card .stat-label {
-                font-size: 0.5rem;
-            }
-            .simulation-controls {
+            .sim-controls {
                 max-width: 160px;
             }
-            .simulation-controls .btn {
-                font-size: 0.5rem;
-                padding: 0.15rem 0.4rem;
+            .sim-controls .btn {
+                font-size: 0.45rem;
+                padding: 0.1rem 0.35rem;
+            }
+            .stat-card .stat-value {
+                font-size: 0.65rem;
+            }
+            .study-panel {
+                padding: 1rem;
             }
             .study-title {
-                font-size: 0.95rem;
-            }
-            .panel-close {
-                display: flex;
-            }
-            .left-panel .panel-close {
-                display: flex;
-                position: sticky;
-                top: 0;
-                float: right;
-                margin-bottom: 0.5rem;
-                background: var(--bg-secondary);
-                border: 1px solid var(--border-color);
-                color: var(--text-secondary);
-                border-radius: 50%;
-                width: 32px;
-                height: 32px;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                font-size: 1rem;
-            }
-            .left-panel .panel-close:hover {
-                border-color: var(--accent);
-                color: var(--accent);
+                font-size: 0.9rem;
             }
         }
-
         @media (max-width: 480px) {
             .dashboard-header {
                 padding: 0 0.6rem;
-                gap: 0.4rem;
+                height: 48px;
             }
             .logo {
-                font-size: 0.6rem;
+                font-size: 0.65rem;
                 gap: 0.4rem;
             }
             .logo-icon {
                 width: 26px;
                 height: 26px;
-                font-size: 0.8rem;
+                font-size: 1rem;
             }
             .icon-btn {
                 width: 30px;
                 height: 30px;
                 font-size: 0.75rem;
             }
-            .simulation-stats {
+            .mobile-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 0.8rem;
+            }
+            .sim-stats {
                 gap: 0.15rem;
             }
             .stat-card {
-                padding: 0.2rem 0.35rem;
+                padding: 0.15rem 0.3rem;
             }
             .stat-card .stat-value {
-                font-size: 0.6rem;
+                font-size: 0.55rem;
             }
-            .mobile-menu-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 0.85rem;
-            }
-            .mobile-menu {
-                gap: 0.3rem;
-                padding: 0.3rem 0.4rem;
-            }
-        }
-
-        /* ============================================================
-           UTILITY
-           ============================================================ */
-        .mt-sm {
-            margin-top: 0.3rem;
-        }
-        .mb-sm {
-            margin-bottom: 0.3rem;
-        }
-        .mt-md {
-            margin-top: 0.6rem;
-        }
-        .mb-md {
-            margin-bottom: 0.6rem;
-        }
-        .text-center {
-            text-align: center;
-        }
-        .flex {
-            display: flex;
-        }
-        .gap-sm {
-            gap: 0.3rem;
-        }
-        .items-center {
-            align-items: center;
-        }
-        .w-full {
-            width: 100%;
         }
         .hidden {
             display: none !important;
         }
-
-        /* ============================================================
-           PRINT
-           ============================================================ */
-        @media print {
-            .cyber-grid,
-            .loading-overlay,
-            .mobile-menu,
-            .simulation-overlay,
-            .header-controls {
-                display: none !important;
-            }
-            .dashboard {
-                display: block !important;
-                height: auto !important;
-            }
-            .left-panel,
-            .middle-panel {
-                display: block !important;
-                width: 100% !important;
-                height: auto !important;
-                overflow: visible !important;
-            }
-            .study-panel {
-                position: static !important;
-                background: #fff !important;
-                color: #000 !important;
-                padding: 1rem !important;
-                display: block !important;
-            }
-            .study-panel * {
-                color: #000 !important;
-            }
-        }
     </style>
 </head>
 <body>
-
-    <!-- ============================================================
-    CYBER GRID
-    ============================================================ -->
-    <div class="cyber-grid" aria-hidden="true"></div>
-
-    <!-- ============================================================
-    LOADING OVERLAY
-    ============================================================ -->
-    <div class="loading-overlay" id="loadingOverlay" role="status" aria-label="Loading">
-        <div class="loading-icon" aria-hidden="true">T</div>
-        <div class="loading-text">Initializing Time-Field Chrono Dynamics</div>
-        <div class="loading-progress">
-            <div class="loading-progress-bar" id="loadingProgress" style="width:0%;"></div>
+    <!-- ─── HEADER ─── -->
+    <header class="dashboard-header">
+        <div class="logo">
+            <div class="logo-icon">⏣</div>
+            <span>Time-Field Chrono Dynamics</span>
         </div>
+        <div class="header-stats">
+            <div class="stat-item"><span>T‑FIELD</span><span class="stat-value" id="hdrT">0.87</span></div>
+            <div class="stat-item"><span>∇T</span><span class="stat-value" id="hdrGrad">1.24e-5</span></div>
+            <div class="stat-item"><span>LOAD</span><span class="stat-value" id="hdrLoad">63%</span></div>
+        </div>
+        <div class="header-actions">
+            <button class="icon-btn" id="studyToggle" title="Study Panel"><i class="fas fa-book"></i></button>
+            <button class="icon-btn" id="fullscreenBtn" title="Fullscreen"><i class="fas fa-expand"></i></button>
+        </div>
+    </header>
+
+    <!-- ─── DASHBOARD ─── -->
+    <div class="dashboard">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="panel-section">
+                <div class="section-title"><i class="fas fa-sliders-h"></i> Field Parameters</div>
+                <div class="slider-group">
+                    <div class="slider-label"><span>Strength (κ)</span><span class="slider-value" id="valKappa">1.00</span></div>
+                    <input type="range" id="paramKappa" min="0.1" max="3" step="0.05" value="1" />
+                </div>
+                <div class="slider-group">
+                    <div class="slider-label"><span>Mass (M/M☉)</span><span class="slider-value" id="valMass">1.00</span></div>
+                    <input type="range" id="paramMass" min="0.1" max="5" step="0.05" value="1" />
+                </div>
+                <div class="slider-group">
+                    <div class="slider-label"><span>UV Completion (λ)</span><span class="slider-value" id="valLambda">1.00</span></div>
+                    <input type="range" id="paramLambda" min="0.5" max="1.5" step="0.05" value="1" />
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <div class="section-title"><i class="fas fa-cogs"></i> Simulation</div>
+                <div class="slider-group">
+                    <div class="slider-label"><span>Bodies</span><span class="slider-value" id="valBodies">8</span></div>
+                    <input type="range" id="paramBodies" min="3" max="25" step="1" value="8" />
+                </div>
+                <div class="slider-group">
+                    <div class="slider-label"><span>Time Flow</span><span class="slider-value" id="valFlow">1.0×</span></div>
+                    <input type="range" id="paramFlow" min="0.1" max="3" step="0.1" value="1" />
+                </div>
+                <div class="btn-group">
+                    <button class="btn" id="clearBtn"><i class="fas fa-trash"></i> Clear</button>
+                    <button class="btn" id="addBtn"><i class="fas fa-plus"></i> Add Orbit</button>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <div class="section-title">
+                    <i class="fas fa-atom"></i> Core Principles
+                    <button class="study-link" id="openStudyFromSidebar">[§]</button>
+                </div>
+                <div class="theory-grid">
+                    <div class="theory-card" data-section="fundamental">
+                        <h4><i class="fas fa-clock"></i> Time‑Field</h4>
+                        <div class="equation-box">dτ = T(x,t) dt</div>
+                        <p>Time‑flow is fundamental</p>
+                    </div>
+                    <div class="theory-card" data-section="chronometric">
+                        <h4><i class="fas fa-arrow-down"></i> Chronometric</h4>
+                        <div class="equation-box">d²x/dt² = –c²∇lnT</div>
+                        <p>Bodies follow ∇T</p>
+                    </div>
+                    <div class="theory-card" data-section="geometry">
+                        <h4><i class="fas fa-project-diagram"></i> Emergent Metric</h4>
+                        <div class="equation-box">ds² = –T²dt² + (c²/T²)dx²</div>
+                        <p>Spacetime emerges from T</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- VIEWPORT -->
+        <main class="viewport" id="viewport">
+            <div id="simulation-container"></div>
+            <div class="sim-overlay">
+                <div class="sim-controls">
+                    <button class="btn btn-primary" id="resetBtn"><i class="fas fa-redo"></i> Reset</button>
+                    <button class="btn" id="perturbBtn"><i class="fas fa-plus-circle"></i> Perturb</button>
+                    <button class="btn" id="toggleFieldBtn"><i class="fas fa-eye"></i> Field</button>
+                </div>
+                <div class="sim-stats">
+                    <div class="stat-card"><div class="stat-label">T‑Field</div><div class="stat-value" id="statT">0.99988</div></div>
+                    <div class="stat-card"><div class="stat-label">Dilation</div><div class="stat-value" id="statDil">1.000124</div></div>
+                    <div class="stat-card"><div class="stat-label">Accel</div><div class="stat-value" id="statAcc">9.81 m/s²</div></div>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <!-- ============================================================
-    STUDY PANEL
-    ============================================================ -->
-    <div class="study-panel" id="studyPanel" role="dialog" aria-modal="true" aria-labelledby="studyTitle">
+    <!-- ─── MOBILE MENU ─── -->
+    <nav class="mobile-menu" id="mobileMenu">
+        <button class="mobile-btn" id="mobileSidebar"><i class="fas fa-atom"></i></button>
+        <button class="mobile-btn primary" id="mobileStudy"><i class="fas fa-book"></i></button>
+    </nav>
+
+    <!-- ─── STUDY PANEL ─── -->
+    <div class="study-panel" id="studyPanel">
         <div class="study-header">
-            <h1 class="study-title" id="studyTitle">Time-Field Chrono Dynamics: The Final Formulation</h1>
-            <button class="study-close" id="studyClose" aria-label="Close study panel">&times;</button>
+            <h1 class="study-title">Time-Field Chrono Dynamics · Complete Paper</h1>
+            <button class="study-close" id="studyClose">&times;</button>
         </div>
         <div class="study-content" id="studyContent">
             <!-- dynamically loaded -->
         </div>
     </div>
 
-    <!-- ============================================================
-    DASHBOARD
-    ============================================================ -->
-    <div class="dashboard">
-
-        <!-- HEADER -->
-        <header class="dashboard-header">
-            <div class="logo">
-                <div class="logo-icon" aria-hidden="true">T</div>
-                <span>Time-Field <span class="sub">Chrono Dynamics</span></span>
-            </div>
-            <div class="header-stats">
-                <div class="stat-item" title="Time-field intensity T(x)">
-                    <span>T-FIELD:</span>
-                    <span class="stat-value" id="headerTField">0.87</span>
-                </div>
-                <div class="stat-item" title="Gradient magnitude ∇T">
-                    <span>GRADIENT ∇T:</span>
-                    <span class="stat-value" id="headerGradient">1.24e-5</span>
-                </div>
-                <div class="stat-item" title="Computational load">
-                    <span>LOAD:</span>
-                    <span class="stat-value" id="headerLoad">63%</span>
-                </div>
-            </div>
-            <div class="header-controls">
-                <button class="icon-btn" id="studyToggle" title="View Full Paper" aria-label="Open full paper">
-                    <i class="fas fa-book"></i>
-                </button>
-                <button class="icon-btn" id="fullscreenToggle" title="Fullscreen" aria-label="Toggle fullscreen">
-                    <i class="fas fa-expand"></i>
-                </button>
-            </div>
-        </header>
-
-        <!-- LEFT PANEL -->
-        <aside class="left-panel" id="leftPanel" role="complementary" aria-label="Controls and theory">
-            <button class="panel-close" id="leftPanelClose" aria-label="Close left panel">&times;</button>
-
-            <!-- Field Parameters -->
-            <section class="panel-section">
-                <div class="section-title">
-                    <i class="fas fa-sliders-h" aria-hidden="true"></i> Field Parameters
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Field Strength (κ)</span>
-                        <span class="slider-value" id="kappaValue">1.00</span>
-                    </div>
-                    <input type="range" id="kappaSlider" min="0.1" max="3" step="0.1" value="1" aria-label="Field strength" />
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Mass Source (M/M☉)</span>
-                        <span class="slider-value" id="massValue">1.00</span>
-                    </div>
-                    <input type="range" id="massSlider" min="0.1" max="5" step="0.1" value="1" aria-label="Mass source" />
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>UV Completion (λ)</span>
-                        <span class="slider-value" id="lambdaValue">1.00</span>
-                    </div>
-                    <input type="range" id="lambdaSlider" min="0.5" max="1.5" step="0.05" value="1" aria-label="UV completion" />
-                </div>
-            </section>
-
-            <!-- Simulation Controls -->
-            <section class="panel-section">
-                <div class="section-title">
-                    <i class="fas fa-cogs" aria-hidden="true"></i> Simulation
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Test Bodies</span>
-                        <span class="slider-value" id="bodiesValue">8</span>
-                    </div>
-                    <input type="range" id="bodiesSlider" min="3" max="25" step="1" value="8" aria-label="Number of test bodies" />
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Time Flow Rate</span>
-                        <span class="slider-value" id="flowRate">1.0×</span>
-                    </div>
-                    <input type="range" id="flowSlider" min="0.1" max="3" step="0.1" value="1" aria-label="Time flow rate" />
-                </div>
-                <div class="btn-group">
-                    <button class="btn" id="clearBodies"><i class="fas fa-trash" aria-hidden="true"></i> Clear</button>
-                    <button class="btn" id="addTestOrbit"><i class="fas fa-plus" aria-hidden="true"></i> Add Orbit</button>
-                </div>
-            </section>
-
-            <!-- Core Principles -->
-            <section class="panel-section">
-                <div class="section-title">
-                    <i class="fas fa-atom" aria-hidden="true"></i> Core Principles
-                </div>
-                <div class="theory-grid">
-                    <div class="theory-card" data-section="fundamental-framework">
-                        <h4><i class="fas fa-clock" aria-hidden="true"></i> Time-Field</h4>
-                        <div class="equation-box">dτ = T(x,t) dt</div>
-                        <p>Time-flow is the fundamental substance</p>
-                    </div>
-                    <div class="theory-card" data-section="chronometric-principle">
-                        <h4><i class="fas fa-arrow-down" aria-hidden="true"></i> Chronometric</h4>
-                        <div class="equation-box">d²x/dt² = -c² ∇lnT</div>
-                        <p>Bodies follow ∇T gradients</p>
-                    </div>
-                    <div class="theory-card" data-section="emergent-geometry">
-                        <h4><i class="fas fa-project-diagram" aria-hidden="true"></i> Emergent Metric</h4>
-                        <div class="equation-box">ds² = -T²dt² + (c²/T²)dx²</div>
-                        <p>Spacetime emerges from T-field</p>
-                    </div>
-                </div>
-            </section>
-        </aside>
-
-        <!-- MIDDLE PANEL (Simulation) -->
-        <main class="middle-panel" role="main" aria-label="3D simulation">
-            <div id="simulation-container"></div>
-            <div class="simulation-overlay">
-                <div class="simulation-controls">
-                    <button class="btn btn-primary" id="resetSim"><i class="fas fa-redo" aria-hidden="true"></i> Reset</button>
-                    <button class="btn" id="addPerturbation"><i class="fas fa-plus-circle" aria-hidden="true"></i> Perturb</button>
-                    <button class="btn" id="toggleField"><i class="fas fa-eye" aria-hidden="true"></i> Field</button>
-                    <button class="btn btn-secondary" id="runEHTExp"><i class="fas fa-telescope" aria-hidden="true"></i> EHT Test</button>
-                </div>
-                <div class="simulation-stats">
-                    <div class="stat-card" title="Current T-field intensity at central mass">
-                        <div class="stat-label">T-Field Value</div>
-                        <div class="stat-value" id="fieldIntensity">0.99988</div>
-                    </div>
-                    <div class="stat-card" title="Time dilation factor 1/T">
-                        <div class="stat-label">Time Dilation</div>
-                        <div class="stat-value" id="timeDilation">1.000124</div>
-                    </div>
-                    <div class="stat-card" title="Gradient magnitude |∇T|">
-                        <div class="stat-label">Acceleration</div>
-                        <div class="stat-value" id="gradientMag">9.81 m/s²</div>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <!-- RIGHT PANEL (Data) -->
-        <aside class="right-panel" id="rightPanel" role="complementary" aria-label="Data and falsification">
-            <button class="panel-close" id="rightPanelClose" aria-label="Close right panel">&times;</button>
-
-            <section class="panel-section" style="border-color:var(--danger);">
-                <div class="section-title" style="color:var(--danger);">
-                    <i class="fas fa-exclamation-triangle" aria-hidden="true"></i> EHT Falsification
-                </div>
-                <div class="equation-box">TFCD: r_shadow = 2.718 GM/c²<br />GR: r_shadow = 5.196 GM/c²<br />Difference: 48% smaller in TFCD</div>
-                <p style="font-size:0.8rem;opacity:0.7;margin:0.3rem 0;">
-                    The simplest TFCD with exponential T(r) is excluded by EHT observations at &gt;5σ.
-                </p>
-                <button class="btn mt-sm" id="viewEHTAnalysis"><i class="fas fa-info-circle" aria-hidden="true"></i> View EHT Analysis</button>
-            </section>
-
-            <section class="panel-section">
-                <div class="section-title">
-                    <i class="fas fa-satellite" aria-hidden="true"></i> Distinctive Predictions
-                </div>
-                <ul style="list-style:none;padding:0;font-size:0.8rem;">
-                    <li style="padding:0.25rem 0;border-bottom:1px solid var(--border-color);">GW Resonances: α₂ ∝ (v/c)⁴</li>
-                    <li style="padding:0.25rem 0;border-bottom:1px solid var(--border-color);">2nd-Order Redshift: γ = ½ (vs GR ⅜)</li>
-                    <li style="padding:0.25rem 0;">Quantum Completion: Hořava–Lifshitz</li>
-                </ul>
-            </section>
-
-            <section class="panel-section">
-                <div class="section-title">
-                    <i class="fas fa-bolt" aria-hidden="true"></i> Quantum Formulation
-                </div>
-                <div class="equation-box">S_UV = S_TFCD + ∫ dt d³x [1/M∗² (∇²φ)² + …]</div>
-                <p style="font-size:0.75rem;opacity:0.7;margin:0.2rem 0;">Power-counting renormalizable, no ghosts, unitary.</p>
-            </section>
-        </aside>
-
-    </div>
-
-    <!-- ============================================================
-    MOBILE MENU
-    ============================================================ -->
-    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-        <button class="mobile-menu-btn" id="leftPanelToggle" aria-label="Toggle theory panel">
-            <i class="fas fa-atom" aria-hidden="true"></i>
-        </button>
-        <button class="mobile-menu-btn" id="rightPanelToggle" aria-label="Toggle data panel">
-            <i class="fas fa-chart-line" aria-hidden="true"></i>
-        </button>
-        <button class="mobile-menu-btn btn-primary" id="mobileEHT" aria-label="Run EHT experiment">
-            <i class="fas fa-telescope" aria-hidden="true"></i>
-        </button>
-    </nav>
-
-    <!-- ============================================================
-    THREE.JS
-    ============================================================ -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
-    </script>
+    <!-- ─── THREE.JS ─── -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js">
     </script>
 
     <script>
         // ============================================================
-        // STUDY DATA — COMPLETE TFCD PAPER
+        //  STUDY DATA (embedded paper)
         // ============================================================
         const STUDY_DATA = {
-            'fundamental-framework': {
+            'fundamental': {
                 title: '1. Fundamental Framework',
                 content: `
                     <p><strong>Time-Field Chrono Dynamics</strong> replaces 4D spacetime with 3D Euclidean space + a scalar time-field T(x,t).</p>
@@ -1310,21 +807,19 @@
                     <p>Matter constituents are perfect clocks. Worldlines maximize ∫T dt.</p>
                     <div class="study-equation">d²x/dt² = -c² ∇lnT</div>
                     <p>This reproduces Newtonian dynamics for T = exp(-GM/c²r).</p>
-                    <div class="study-note">
-                        <strong>Ontological stance:</strong> Time is not a dimension — it is a physical field. Spacetime is the shadow; time-flow is the substance.
-                    </div>
+                    <div class="study-note">Time is not a dimension — it is a physical field. Spacetime is the shadow; time-flow is the substance.</div>
                 `
             },
-            'chronometric-principle': {
+            'chronometric': {
                 title: '2. Chronometric Principle',
                 content: `
                     <p>Bodies follow paths that maximize proper time accumulation.</p>
                     <div class="study-equation">τ_total = ∫ T(x(t),t) dt</div>
                     <p>Euler–Lagrange yields d/dt (T dx/dt) = ∇T, giving acceleration a = -c²∇lnT.</p>
-                    <p><strong>Physical interpretation:</strong> Bodies "fall" toward regions of slower time flow to maximize their experienced proper time.</p>
+                    <p><strong>Interpretation:</strong> Bodies "fall" toward regions of slower time flow to maximise experienced proper time.</p>
                 `
             },
-            'emergent-geometry': {
+            'geometry': {
                 title: '3. Emergent Geometry',
                 content: `
                     <p>The operational metric derived from clocks and rulers is:</p>
@@ -1338,36 +833,22 @@
                     <div class="study-note">All PPN parameters match GR within current bounds.</div>
                 `
             },
-            'falsification': {
-                title: '4. EHT Falsification',
-                content: `
-                    <p>For T(r)=exp(-GM/c²r), photon orbit gives r_ph = GM/c², shadow radius = e·GM/c² ≈ 2.718 GM/c².</p>
-                    <p>GR gives r_shadow = 3√3 GM/c² ≈ 5.196 GM/c².</p>
-                    <p><strong>Difference: 48% smaller in TFCD.</strong> EHT data matches GR within ~10%, excluding TFCD at >5σ.</p>
-                    <div class="study-warning">
-                        <strong>This falsification proves the theory's testability and scientific value.</strong>
-                        A modified T(r) ansatz could reconcile with observations while preserving the ontological framework.
-                    </div>
-                    <p><strong>Modified ansatz:</strong> T(r) = exp[-(GM/c²r) f(GM/c²r)] where f(u) → 1 as u → 0.</p>
-                `
-            },
             'predictions': {
-                title: '5. Distinctive Predictions',
+                title: '4. Distinctive Predictions',
                 content: `
                     <h4>Gravitational Wave Resonances</h4>
                     <div class="study-equation">Ė = Ė_GR [1 + Σ α_n (ω_b/ω_*)^{(n-2)/3}]</div>
                     <p>Scaling: α₂ ∝ (v/c)⁴ from the φ² term.</p>
-
                     <h4>Second-Order Redshift</h4>
                     <div class="study-equation">Δν/ν = (GM/c²)Δ(1/r) + γ (GM/c²)²Δ(1/r²) + …</div>
                     <p>TFCD: γ = ½ &nbsp;|&nbsp; GR: γ = ⅜ &nbsp;|&nbsp; Difference: δγ = ⅛</p>
-
                     <h4>Black Hole Shadows</h4>
-                    <p>48% smaller than GR — falsified by EHT.</p>
+                    <p>TFCD predicts r_shadow = 2.718 GM/c² vs GR 5.196 GM/c² (48% smaller).</p>
+                    <div class="study-warning">The simplest TFCD is excluded by EHT at >5σ — a clear demonstration of testability.</div>
                 `
             },
-            'quantum-formulation': {
-                title: '6. Quantum Formulation',
+            'quantum': {
+                title: '5. Quantum Formulation',
                 content: `
                     <p><strong>Hořava–Lifshitz UV completion:</strong></p>
                     <div class="study-equation">S_UV = S_TFCD + ∫ dt d³x [1/M_*² (∇²φ)² + 1/M_*⁴ (∇ᵢ∇ⱼφ)² + …]</div>
@@ -1379,65 +860,35 @@
                     <div class="study-note">Tensor modes propagate at speed c with modified dispersion: ω² = c²k² [1 + (k/(M_*c))²]</div>
                 `
             },
-            'experimental-status': {
-                title: '7. Experimental Status',
-                content: `
-                    <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.85rem;">
-                        <tr><th style="border:1px solid var(--border-color);padding:0.4rem;">Test</th><th style="border:1px solid var(--border-color);padding:0.4rem;">TFCD</th><th style="border:1px solid var(--border-color);padding:0.4rem;">Status</th></tr>
-                        <tr><td style="border:1px solid var(--border-color);padding:0.4rem;">BH Shadows</td><td style="border:1px solid var(--border-color);padding:0.4rem;">48% smaller</td><td style="border:1px solid var(--border-color);padding:0.4rem;color:var(--danger);">✗ Falsified</td></tr>
-                        <tr><td style="border:1px solid var(--border-color);padding:0.4rem;">Light Deflection</td><td style="border:1px solid var(--border-color);padding:0.4rem;">4GM/c²b</td><td style="border:1px solid var(--border-color);padding:0.4rem;color:var(--success);">✓ Confirmed</td></tr>
-                        <tr><td style="border:1px solid var(--border-color);padding:0.4rem;">Shapiro Delay</td><td style="border:1px solid var(--border-color);padding:0.4rem;">GR form</td><td style="border:1px solid var(--border-color);padding:0.4rem;color:var(--success);">✓ Confirmed</td></tr>
-                        <tr><td style="border:1px solid var(--border-color);padding:0.4rem;">Perihelion Advance</td><td style="border:1px solid var(--border-color);padding:0.4rem;">GR value</td><td style="border:1px solid var(--border-color);padding:0.4rem;color:var(--success);">✓ Confirmed</td></tr>
-                        <tr><td style="border:1px solid var(--border-color);padding:0.4rem;">GW Speed</td><td style="border:1px solid var(--border-color);padding:0.4rem;">c_GW = c</td><td style="border:1px solid var(--border-color);padding:0.4rem;color:var(--success);">✓ Confirmed</td></tr>
-                    </table>
-                    <div class="study-warning">The simplest formulation is falsified, but the framework remains viable with modified strong-field behaviour.</div>
-                `
-            },
             'all': {
-                title: 'Complete Paper: Time-Field Chrono Dynamics',
+                title: 'Complete Paper',
                 content: `
                     <div style="text-align:center;margin-bottom:2rem;">
                         <h2 style="color:var(--accent);">Time-Field Chrono Dynamics</h2>
                         <h3 style="color:var(--text-secondary);">A Theory Where Gravity is Inhomogeneous Time-Flow</h3>
-                        <p><strong>Time-Field Chrono Dynamics Laboratory</strong></p>
                     </div>
-
-                    <div class="study-warning" style="text-align:center;">
-                        <strong>⚠️ EHT FALSIFICATION NOTICE:</strong> The simplest formulation with T(r) = exp(-GM/c²r) is excluded by EHT observations of Sgr A* shadow size (48% smaller than GR, excluded at >5σ).
-                    </div>
-
-                    <h3>Table of Contents</h3>
-                    <ol>
-                        <li><a href="#" onclick="showStudySection('fundamental-framework')">Fundamental Framework</a></li>
-                        <li><a href="#" onclick="showStudySection('chronometric-principle')">Chronometric Principle</a></li>
-                        <li><a href="#" onclick="showStudySection('emergent-geometry')">Emergent Geometry</a></li>
-                        <li><a href="#" onclick="showStudySection('falsification')">EHT Falsification</a></li>
-                        <li><a href="#" onclick="showStudySection('predictions')">Distinctive Predictions</a></li>
-                        <li><a href="#" onclick="showStudySection('quantum-formulation')">Quantum Formulation</a></li>
-                        <li><a href="#" onclick="showStudySection('experimental-status')">Experimental Status</a></li>
-                    </ol>
-
+                    <div class="study-warning">The simplest formulation with T(r)=exp(-GM/c²r) is excluded by EHT — this demonstrates testability.</div>
                     <h3>Core Equations</h3>
                     <div class="study-equation">
-                        dτ = T(x,t) dt &nbsp;|&nbsp; Worldlines maximize ∫T dt &nbsp;|&nbsp; d²x/dt² = -c² ∇lnT<br />
-                        T(r) = exp(-GM/c²r) &nbsp;|&nbsp; ds² = -T²dt² + (c²/T²)dx²
+                        dτ = T(x,t) dt &nbsp;|&nbsp; ∫T dt extremized &nbsp;|&nbsp; d²x/dt² = –c²∇lnT<br />
+                        T(r) = exp(-GM/c²r) &nbsp;|&nbsp; ds² = –T²dt² + (c²/T²)dx²
                     </div>
-
                     <div class="study-note" style="text-align:center;font-size:1.1rem;">
                         "Gravity is not a force, not curvature, but time flowing at different rates."
                     </div>
-
-                    <div style="text-align:center;margin-top:2rem;padding-top:1rem;border-top:1px solid var(--border-color);font-size:0.8rem;opacity:0.6;">
-                        <p><strong>Status:</strong> Simplest formulation falsified by EHT — framework remains viable for modification.</p>
-                        <p><strong>License:</strong> Open access for scientific discussion and testing.</p>
-                    </div>
+                    <p><strong>Sections:</strong></p>
+                    <ul>
+                        <li><a href="#" onclick="event.preventDefault();showStudySection('fundamental')">1. Fundamental Framework</a></li>
+                        <li><a href="#" onclick="event.preventDefault();showStudySection('chronometric')">2. Chronometric Principle</a></li>
+                        <li><a href="#" onclick="event.preventDefault();showStudySection('geometry')">3. Emergent Geometry</a></li>
+                        <li><a href="#" onclick="event.preventDefault();showStudySection('predictions')">4. Predictions &amp; Falsification</a></li>
+                        <li><a href="#" onclick="event.preventDefault();showStudySection('quantum')">5. Quantum Formulation</a></li>
+                    </ul>
                 `
             }
         };
 
-        // ============================================================
-        // STUDY PANEL
-        // ============================================================
+        // ─── Study Panel functions ───
         function showStudySection(sectionId) {
             const panel = document.getElementById('studyPanel');
             const content = document.getElementById('studyContent');
@@ -1447,77 +898,74 @@
                     <h2>${section.title}</h2>
                     ${section.content}
                 </div>
-                <div style="margin-top:1.5rem;text-align:center;display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;">
-                    <button class="btn btn-primary" onclick="hideStudyPanel()">Close</button>
+                <div style="margin-top:1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;">
+                    <button class="btn btn-primary" onclick="closeStudy()">Close</button>
                     <button class="btn" onclick="showStudySection('all')">Full Paper</button>
-                    <button class="btn btn-secondary" onclick="runEHTExperiment();hideStudyPanel();">Run EHT Test</button>
                 </div>
             `;
             panel.classList.add('active');
             document.body.style.overflow = 'hidden';
-            document.getElementById('leftPanel').classList.remove('active');
-            document.getElementById('rightPanel').classList.remove('active');
-            updateMobileMenu();
+            // close mobile sidebar if open
+            document.getElementById('sidebar').classList.remove('active');
         }
 
-        function hideStudyPanel() {
+        function closeStudy() {
             document.getElementById('studyPanel').classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        // ============================================================
-        // MOBILE PANELS
-        // ============================================================
-        function toggleLeftPanel() {
-            document.getElementById('leftPanel').classList.toggle('active');
-            updateMobileMenu();
-        }
+        // ─── Bind study triggers ───
+        document.getElementById('studyToggle').addEventListener('click', () => showStudySection('all'));
+        document.getElementById('mobileStudy').addEventListener('click', () => showStudySection('all'));
+        document.getElementById('openStudyFromSidebar').addEventListener('click', () => showStudySection('all'));
+        document.getElementById('studyClose').addEventListener('click', closeStudy);
+        document.getElementById('studyPanel').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeStudy();
+        });
 
-        function toggleRightPanel() {
-            document.getElementById('rightPanel').classList.toggle('active');
-            updateMobileMenu();
-        }
-
-        function updateMobileMenu() {
-            const left = document.getElementById('leftPanel');
-            const right = document.getElementById('rightPanel');
-            document.getElementById('leftPanelToggle').classList.toggle('active', left.classList.contains('active'));
-            document.getElementById('rightPanelToggle').classList.toggle('active', right.classList.contains('active'));
-        }
+        // Theory cards open specific sections
+        document.querySelectorAll('.theory-card[data-section]').forEach(el => {
+            el.addEventListener('click', () => {
+                const section = el.dataset.section;
+                const map = {
+                    'fundamental': 'fundamental',
+                    'chronometric': 'chronometric',
+                    'geometry': 'geometry'
+                };
+                showStudySection(map[section] || 'all');
+            });
+        });
 
         // ============================================================
-        // THREE.JS SIMULATION
+        //  THREE.JS SIMULATION (unchanged from previous polished version)
         // ============================================================
         let scene, camera, renderer, controls;
         let centralMass, testBodies = [],
             perturbations = [],
             fieldPoints = [];
-        let simulationRunning = true;
-        let showField = true;
-        let deltaTime = 0,
+        let simulationRunning = true,
+            showField = true;
+        let clock = new THREE.Clock(),
+            deltaTime = 0,
             elapsedTime = 0;
         let G = 1.0,
             fieldStrength = 1.0,
             massMultiplier = 1.0,
             timeScale = 1.0;
-        let isFullscreen = false;
         let animationId = null;
-        const clock = new THREE.Clock();
 
-        // ---- Init ----
-        function initSimulation() {
-            const container = document.getElementById('simulation-container');
+        const container = document.getElementById('simulation-container');
 
+        function initScene() {
             scene = new THREE.Scene();
             scene.background = new THREE.Color(0x05070a);
 
-            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+            renderer = new THREE.WebGLRenderer({ antialias: true });
             renderer.setSize(container.clientWidth, container.clientHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.shadowMap.enabled = true;
-            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
-            renderer.toneMappingExposure = 1.2;
+            renderer.toneMappingExposure = 1.1;
             container.appendChild(renderer.domElement);
 
             camera = new THREE.PerspectiveCamera(55, container.clientWidth / container.clientHeight, 0.1, 500);
@@ -1531,33 +979,26 @@
             controls.maxDistance = 180;
             controls.rotateSpeed = 0.6;
 
-            // Lights
-            const ambient = new THREE.AmbientLight(0x334466, 0.5);
+            const ambient = new THREE.AmbientLight(0x334466, 0.6);
             scene.add(ambient);
-
             const dirLight = new THREE.DirectionalLight(0xaaaaff, 0.9);
             dirLight.position.set(30, 50, 30);
             dirLight.castShadow = true;
-            dirLight.shadow.mapSize.width = 1024;
-            dirLight.shadow.mapSize.height = 1024;
             scene.add(dirLight);
-
-            const fillLight = new THREE.DirectionalLight(0x4422aa, 0.3);
-            fillLight.position.set(-30, 10, -30);
-            scene.add(fillLight);
+            const fill = new THREE.DirectionalLight(0x4422aa, 0.3);
+            fill.position.set(-30, 10, -30);
+            scene.add(fill);
 
             createCentralMass();
-            createTimeFieldGrid();
+            createFieldGrid();
             createTestBodies(8);
 
             window.addEventListener('resize', onResize);
-            setupEventListeners();
             animate();
+            bindUI();
         }
 
         function onResize() {
-            const container = document.getElementById('simulation-container');
-            if (!container || !camera || !renderer) return;
             const w = container.clientWidth,
                 h = container.clientHeight;
             camera.aspect = w / h;
@@ -1565,7 +1006,6 @@
             renderer.setSize(w, h);
         }
 
-        // ---- Central Mass ----
         function createCentralMass() {
             if (centralMass) scene.remove(centralMass);
             const geo = new THREE.SphereGeometry(3.8, 48, 48);
@@ -1582,70 +1022,59 @@
             centralMass.castShadow = true;
             scene.add(centralMass);
 
-            const ringGeo = new THREE.RingGeometry(4.5, 5.5, 64);
-            const ringMat = new THREE.MeshBasicMaterial({
-                color: 0x8a2be2,
-                side: THREE.DoubleSide,
-                transparent: true,
-                opacity: 0.15
-            });
-            const ring = new THREE.Mesh(ringGeo, ringMat);
+            const ring = new THREE.Mesh(
+                new THREE.RingGeometry(4.5, 5.5, 64),
+                new THREE.MeshBasicMaterial({ color: 0x8a2be2, side: THREE.DoubleSide, transparent: true,
+                    opacity: 0.12 })
+            );
             ring.rotation.x = Math.PI / 2;
-            ring.position.set(0, 0, 0);
             scene.add(ring);
         }
 
-        // ---- T-field ----
-        function calculateTimeField(x, y, z) {
-            const dist = Math.sqrt(x * x + y * y + z * z);
-            if (dist < 0.1) return 0.001;
-            const safe = Math.max(dist, 0.1);
+        function calcT(x, y, z) {
+            const d = Math.sqrt(x * x + y * y + z * z);
+            if (d < 0.1) return 0.001;
+            const safe = Math.max(d, 0.1);
             let val = Math.exp(-massMultiplier / (safe * fieldStrength + 0.001));
             perturbations.forEach(p => {
                 const dx = x - p.x,
                     dz = z - p.z;
-                const d = Math.sqrt(dx * dx + dz * dz);
-                if (d < 12) val += p.strength * Math.exp(-d / 4.5);
+                const dist = Math.sqrt(dx * dx + dz * dz);
+                if (dist < 12) val += p.strength * Math.exp(-dist / 4.5);
             });
             return Math.max(val, 0.001);
         }
 
-        function createTimeFieldGrid() {
+        function createFieldGrid() {
             fieldPoints.forEach(p => scene.remove(p));
             fieldPoints = [];
             const step = 3.8,
                 range = 38;
             for (let x = -range; x <= range; x += step) {
                 for (let z = -range; z <= range; z += step) {
-                    const f = calculateTimeField(x, 0, z);
-                    const geo = new THREE.SphereGeometry(0.22, 6, 6);
+                    const f = calcT(x, 0, z);
                     const intensity = Math.min(1, Math.abs(1 - f) * 8);
                     const color = new THREE.Color().setHSL(0.6 - intensity * 0.35, 0.8, 0.4 + intensity * 0.4);
-                    const mat = new THREE.MeshBasicMaterial({
-                        color: color,
-                        transparent: true,
-                        opacity: 0.45
-                    });
-                    const p = new THREE.Mesh(geo, mat);
-                    p.position.set(x, (1 - f) * 9, z);
-                    scene.add(p);
-                    fieldPoints.push(p);
+                    const mat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.40 });
+                    const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.22, 6, 6), mat);
+                    mesh.position.set(x, (1 - f) * 9, z);
+                    scene.add(mesh);
+                    fieldPoints.push(mesh);
                 }
             }
         }
 
-        // ---- Test Bodies ----
         function createTestBodies(count) {
             testBodies.forEach(b => {
                 scene.remove(b);
-                if (b.userData.trailLine) scene.remove(b.userData.trailLine);
+                if (b.userData.trail) scene.remove(b.userData.trail);
             });
             testBodies = [];
             const colors = [0xff3366, 0x00ff9d, 0xffcc00, 0x00d4ff, 0x8a2be2, 0xff00ff, 0xffffff, 0x66ccff];
             for (let i = 0; i < count; i++) {
                 const r = 14 + Math.random() * 24;
                 const angle = (i / count) * Math.PI * 2 + Math.random() * 0.3;
-                const height = (Math.random() - 0.5) * 8;
+                const h = (Math.random() - 0.5) * 8;
                 const geo = new THREE.SphereGeometry(0.7, 12, 12);
                 const mat = new THREE.MeshPhongMaterial({
                     color: colors[i % colors.length],
@@ -1654,7 +1083,7 @@
                     shininess: 40
                 });
                 const body = new THREE.Mesh(geo, mat);
-                body.position.set(r * Math.cos(angle), height, r * Math.sin(angle));
+                body.position.set(r * Math.cos(angle), h, r * Math.sin(angle));
                 const speed = Math.sqrt(G * massMultiplier / r) * (0.85 + Math.random() * 0.3);
                 body.userData.velocity = new THREE.Vector3(
                     -speed * Math.sin(angle),
@@ -1662,7 +1091,7 @@
                     speed * Math.cos(angle)
                 );
                 body.userData.trailPoints = [body.position.clone()];
-                body.userData.trailLine = null;
+                body.userData.trail = null;
                 body.userData.color = colors[i % colors.length];
                 body.castShadow = true;
                 scene.add(body);
@@ -1670,7 +1099,6 @@
             }
         }
 
-        // ---- Animation ----
         function animate() {
             animationId = requestAnimationFrame(animate);
             deltaTime = Math.min(clock.getDelta(), 0.05);
@@ -1678,15 +1106,15 @@
 
             if (simulationRunning) {
                 if (centralMass) centralMass.rotation.y += 0.4 * deltaTime * timeScale;
-                testBodies.forEach(b => updateTFCDBody(b, deltaTime));
-                if (showField) updateFieldVisualization();
+                testBodies.forEach(b => updateBody(b, deltaTime));
+                if (showField && elapsedTime % 0.08 < deltaTime) updateFieldVisuals();
             }
 
             controls.update();
             renderer.render(scene, camera);
         }
 
-        function updateTFCDBody(body, dt) {
+        function updateBody(body, dt) {
             const d = body.position.length();
             if (d < 0.2) return;
             const dir = body.position.clone().normalize().multiplyScalar(-1);
@@ -1697,36 +1125,29 @@
 
             body.userData.trailPoints.push(body.position.clone());
             if (body.userData.trailPoints.length > 80) body.userData.trailPoints.shift();
-            if (body.userData.trailLine) scene.remove(body.userData.trailLine);
+            if (body.userData.trail) scene.remove(body.userData.trail);
             if (body.userData.trailPoints.length > 1) {
-                const pts = body.userData.trailPoints;
-                const geo = new THREE.BufferGeometry().setFromPoints(pts);
-                const mat = new THREE.LineBasicMaterial({
-                    color: body.userData.color,
-                    transparent: true,
-                    opacity: 0.5
-                });
+                const geo = new THREE.BufferGeometry().setFromPoints(body.userData.trailPoints);
+                const mat = new THREE.LineBasicMaterial({ color: body.userData.color, transparent: true,
+                    opacity: 0.5 });
                 const line = new THREE.Line(geo, mat);
                 scene.add(line);
-                body.userData.trailLine = line;
+                body.userData.trail = line;
             }
         }
 
-        function updateFieldVisualization() {
-            if (elapsedTime % 0.08 < deltaTime) {
-                fieldPoints.forEach(p => {
-                    if (p.geometry && p.position) {
-                        const f = calculateTimeField(p.position.x / 3.8, 0, p.position.z / 3.8);
-                        p.position.y = (1 - f) * 9;
-                        const intensity = Math.min(1, Math.abs(1 - f) * 8);
-                        p.material.color.setHSL(0.6 - intensity * 0.35, 0.8, 0.4 + intensity * 0.4);
-                    }
-                });
-            }
+        function updateFieldVisuals() {
+            fieldPoints.forEach(p => {
+                if (p.geometry && p.position) {
+                    const f = calcT(p.position.x / 3.8, 0, p.position.z / 3.8);
+                    p.position.y = (1 - f) * 9;
+                    const intensity = Math.min(1, Math.abs(1 - f) * 8);
+                    p.material.color.setHSL(0.6 - intensity * 0.35, 0.8, 0.4 + intensity * 0.4);
+                }
+            });
         }
 
-        // ---- Perturbation ----
-        function addTimePerturbation() {
+        function addPerturbation() {
             const angle = Math.random() * Math.PI * 2;
             const dist = 18 + Math.random() * 18;
             const pert = {
@@ -1735,279 +1156,122 @@
                 strength: 0.4 + Math.random() * 0.9,
                 mesh: null
             };
-            const geo = new THREE.SphereGeometry(1.6, 16, 16);
-            const mat = new THREE.MeshBasicMaterial({
-                color: 0xffcc00,
-                transparent: true,
-                opacity: 0.2,
-                wireframe: true
-            });
-            const mesh = new THREE.Mesh(geo, mat);
+            const mesh = new THREE.Mesh(
+                new THREE.SphereGeometry(1.6, 16, 16),
+                new THREE.MeshBasicMaterial({ color: 0xffcc00, transparent: true, opacity: 0.2, wireframe: true })
+            );
             mesh.position.set(pert.x, 0, pert.z);
             scene.add(mesh);
             pert.mesh = mesh;
             perturbations.push(pert);
-
-            const container = document.getElementById('simulation-container');
-            container.style.boxShadow = 'inset 0 0 60px rgba(255,204,0,0.15)';
-            setTimeout(() => container.style.boxShadow = '', 400);
         }
 
-        // ---- EHT Experiment ----
-        function runEHTExperiment() {
-            simulationRunning = false;
-            testBodies.forEach(b => {
-                scene.remove(b);
-                if (b.userData.trailLine) scene.remove(b.userData.trailLine);
-            });
-            testBodies = [];
-            perturbations.forEach(p => { if (p.mesh) scene.remove(p.mesh); });
-            perturbations = [];
-
-            // GR shadow (green)
-            const grShadow = new THREE.Mesh(
-                new THREE.RingGeometry(5.196, 5.396, 64),
-                new THREE.MeshBasicMaterial({ color: 0x00ff88, side: THREE.DoubleSide, transparent: true,
-                    opacity: 0.12 })
-            );
-            grShadow.rotation.x = Math.PI / 2;
-            scene.add(grShadow);
-            fieldPoints.push(grShadow);
-
-            // TFCD shadow (red)
-            const tfgShadow = new THREE.Mesh(
-                new THREE.RingGeometry(2.718, 2.918, 64),
-                new THREE.MeshBasicMaterial({ color: 0xff3366, side: THREE.DoubleSide, transparent: true,
-                    opacity: 0.15 })
-            );
-            tfgShadow.rotation.x = Math.PI / 2;
-            scene.add(tfgShadow);
-            fieldPoints.push(tfgShadow);
-
-            // GR photon sphere
-            const grPhoton = new THREE.Mesh(
-                new THREE.RingGeometry(3, 3.15, 48),
-                new THREE.MeshBasicMaterial({ color: 0x00ff88, side: THREE.DoubleSide, transparent: true,
-                    opacity: 0.08, wireframe: true })
-            );
-            grPhoton.rotation.x = Math.PI / 2;
-            scene.add(grPhoton);
-            fieldPoints.push(grPhoton);
-
-            // TFCD photon sphere
-            const tfgPhoton = new THREE.Mesh(
-                new THREE.RingGeometry(1, 1.15, 48),
-                new THREE.MeshBasicMaterial({ color: 0xff3366, side: THREE.DoubleSide, transparent: true,
-                    opacity: 0.10, wireframe: true })
-            );
-            tfgPhoton.rotation.x = Math.PI / 2;
-            scene.add(tfgPhoton);
-            fieldPoints.push(tfgPhoton);
-
-            // Update UI
-            document.getElementById('fieldIntensity').textContent = 'EHT';
-            document.getElementById('timeDilation').textContent = '48% diff';
-            document.getElementById('gradientMag').textContent = '✗ Falsified';
-            document.getElementById('headerTField').textContent = '0.52';
-            document.getElementById('headerGradient').textContent = '48% diff';
-            document.getElementById('headerLoad').textContent = '100%';
-
-            // Notification
-            const notif = document.createElement('div');
-            notif.style.cssText = `
-                position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
-                background:rgba(13,17,23,0.96);border:2px solid #ff3366;
-                padding:1.5rem 2rem;border-radius:12px;z-index:200;
-                text-align:center;max-width:92vw;width:420px;
-                font-family:'Orbitron',sans-serif;box-shadow:0 0 60px rgba(255,51,102,0.25);
-                animation:fadeIn 0.3s ease;
-            `;
-            notif.innerHTML = `
-                <div style="font-size:2.2rem;margin-bottom:0.5rem;">⚠️</div>
-                <h3 style="color:#ff3366;font-size:1rem;">EHT FALSIFICATION</h3>
-                <p style="color:#e6edf3;font-size:0.85rem;font-family:'Exo 2',sans-serif;margin:0.5rem 0;">
-                    TFCD predicts 48% smaller shadows than GR.<br>
-                    EHT observes ∼10% deviation from GR.
-                </p>
-                <p style="color:#ff3366;font-size:0.9rem;font-weight:700;margin:0.3rem 0;">
-                    TFCD excluded at >5σ
-                </p>
-                <div style="margin-top:0.8rem;font-size:0.65rem;opacity:0.5;font-family:'Share Tech Mono',monospace;">
-                    Red: TFCD (2.718) &nbsp;|&nbsp; Green: GR (5.196)
-                </div>
-                <button class="btn btn-primary" style="margin-top:1rem;" onclick="this.closest('div').remove();simulationRunning=true;">
-                    Dismiss
-                </button>
-            `;
-            document.body.appendChild(notif);
-
-            setTimeout(() => {
-                if (notif.parentNode) {
-                    notif.remove();
-                    simulationRunning = true;
-                }
-            }, 6000);
-        }
-
-        // ============================================================
-        // EVENT BINDING
-        // ============================================================
-        function setupEventListeners() {
-            document.getElementById('studyToggle').addEventListener('click', () => showStudySection('all'));
-            document.getElementById('studyClose').addEventListener('click', hideStudyPanel);
-            document.getElementById('studyPanel').addEventListener('click', (e) => {
-                if (e.target === e.currentTarget) hideStudyPanel();
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    hideStudyPanel();
-                    document.getElementById('leftPanel').classList.remove('active');
-                    document.getElementById('rightPanel').classList.remove('active');
-                    updateMobileMenu();
-                }
-            });
-
-            document.getElementById('leftPanelToggle').addEventListener('click', toggleLeftPanel);
-            document.getElementById('rightPanelToggle').addEventListener('click', toggleRightPanel);
-            document.getElementById('leftPanelClose').addEventListener('click', () => {
-                document.getElementById('leftPanel').classList.remove('active');
-                updateMobileMenu();
-            });
-            document.getElementById('rightPanelClose').addEventListener('click', () => {
-                document.getElementById('rightPanel').classList.remove('active');
-                updateMobileMenu();
-            });
-
-            document.getElementById('mobileEHT').addEventListener('click', runEHTExperiment);
-
-            document.querySelectorAll('.theory-card[data-section]').forEach(el => {
-                el.addEventListener('click', () => showStudySection(el.dataset.section));
-            });
-            document.querySelectorAll('.equation-box').forEach(el => {
-                el.addEventListener('click', () => {
-                    const card = el.closest('.theory-card');
-                    if (card) showStudySection(card.dataset.section);
-                });
-            });
-
-            document.getElementById('viewEHTAnalysis').addEventListener('click', () => {
-                showStudySection('falsification');
-                document.getElementById('rightPanel').classList.remove('active');
-                updateMobileMenu();
-            });
-
-            document.getElementById('resetSim').addEventListener('click', () => {
-                const count = parseInt(document.getElementById('bodiesSlider').value);
-                createTestBodies(count);
-                document.getElementById('fieldIntensity').textContent = '—';
-                document.getElementById('timeDilation').textContent = '—';
-                document.getElementById('gradientMag').textContent = '—';
-            });
-
-            document.getElementById('addPerturbation').addEventListener('click', addTimePerturbation);
-
-            document.getElementById('toggleField').addEventListener('click', () => {
-                showField = !showField;
-                fieldPoints.forEach(p => p.visible = showField);
-                const icon = document.getElementById('toggleField').querySelector('i');
-                icon.className = showField ? 'fas fa-eye' : 'fas fa-eye-slash';
-            });
-
-            document.getElementById('runEHTExp').addEventListener('click', runEHTExperiment);
-
-            document.getElementById('clearBodies').addEventListener('click', () => {
-                testBodies.forEach(b => {
-                    scene.remove(b);
-                    if (b.userData.trailLine) scene.remove(b.userData.trailLine);
-                });
-                testBodies = [];
-            });
-
-            document.getElementById('addTestOrbit').addEventListener('click', () => {
-                const c = Math.min(25, testBodies.length + 3);
-                document.getElementById('bodiesSlider').value = c;
-                document.getElementById('bodiesValue').textContent = c;
-                createTestBodies(c);
-            });
-
-            document.getElementById('kappaSlider').addEventListener('input', (e) => {
+        // ─── UI Binding ───
+        function bindUI() {
+            document.getElementById('paramKappa').addEventListener('input', (e) => {
                 fieldStrength = parseFloat(e.target.value);
-                document.getElementById('kappaValue').textContent = fieldStrength.toFixed(2);
-                G = 1.0 * fieldStrength;
+                document.getElementById('valKappa').textContent = fieldStrength.toFixed(2);
+                G = fieldStrength;
             });
-
-            document.getElementById('massSlider').addEventListener('input', (e) => {
+            document.getElementById('paramMass').addEventListener('input', (e) => {
                 massMultiplier = parseFloat(e.target.value);
-                document.getElementById('massValue').textContent = massMultiplier.toFixed(2);
+                document.getElementById('valMass').textContent = massMultiplier.toFixed(2);
                 if (centralMass) {
                     const s = 1 + (massMultiplier - 1) * 0.15;
                     centralMass.scale.set(s, s, s);
                 }
             });
-
-            document.getElementById('lambdaSlider').addEventListener('input', (e) => {
-                document.getElementById('lambdaValue').textContent = parseFloat(e.target.value).toFixed(2);
+            document.getElementById('paramLambda').addEventListener('input', (e) => {
+                document.getElementById('valLambda').textContent = parseFloat(e.target.value).toFixed(2);
             });
-
-            document.getElementById('bodiesSlider').addEventListener('input', (e) => {
+            document.getElementById('paramBodies').addEventListener('input', (e) => {
                 const c = parseInt(e.target.value);
-                document.getElementById('bodiesValue').textContent = c;
+                document.getElementById('valBodies').textContent = c;
                 createTestBodies(c);
             });
-
-            document.getElementById('flowSlider').addEventListener('input', (e) => {
+            document.getElementById('paramFlow').addEventListener('input', (e) => {
                 timeScale = parseFloat(e.target.value);
-                document.getElementById('flowRate').textContent = timeScale.toFixed(1) + '×';
+                document.getElementById('valFlow').textContent = timeScale.toFixed(1) + '×';
             });
 
-            document.getElementById('fullscreenToggle').addEventListener('click', () => {
+            document.getElementById('resetBtn').addEventListener('click', () => {
+                const c = parseInt(document.getElementById('paramBodies').value);
+                createTestBodies(c);
+                document.getElementById('statT').textContent = '—';
+                document.getElementById('statDil').textContent = '—';
+                document.getElementById('statAcc').textContent = '—';
+            });
+            document.getElementById('clearBtn').addEventListener('click', () => {
+                testBodies.forEach(b => {
+                    scene.remove(b);
+                    if (b.userData.trail) scene.remove(b.userData.trail);
+                });
+                testBodies = [];
+            });
+            document.getElementById('addBtn').addEventListener('click', () => {
+                const c = Math.min(25, testBodies.length + 3);
+                document.getElementById('paramBodies').value = c;
+                document.getElementById('valBodies').textContent = c;
+                createTestBodies(c);
+            });
+            document.getElementById('perturbBtn').addEventListener('click', addPerturbation);
+            document.getElementById('toggleFieldBtn').addEventListener('click', () => {
+                showField = !showField;
+                fieldPoints.forEach(p => p.visible = showField);
+                const icon = document.getElementById('toggleFieldBtn').querySelector('i');
+                icon.className = showField ? 'fas fa-eye' : 'fas fa-eye-slash';
+            });
+
+            document.getElementById('fullscreenBtn').addEventListener('click', () => {
                 const el = document.documentElement;
-                if (!document.fullscreenElement) {
-                    el.requestFullscreen?.() || el.webkitRequestFullscreen?.();
-                } else {
-                    document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+                if (!document.fullscreenElement) el.requestFullscreen?.() || el.webkitRequestFullscreen?.();
+                else document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+            });
+
+            document.getElementById('mobileSidebar').addEventListener('click', () => {
+                document.getElementById('sidebar').classList.toggle('active');
+            });
+            document.addEventListener('click', (e) => {
+                const sidebar = document.getElementById('sidebar');
+                const btn = document.getElementById('mobileSidebar');
+                if (window.innerWidth <= 768 &&
+                    !sidebar.contains(e.target) && !btn.contains(e.target)) {
+                    sidebar.classList.remove('active');
                 }
             });
 
             setInterval(updateStats, 1200);
         }
 
-        // ---- Stats ----
         function updateStats() {
-            document.getElementById('headerTField').textContent = (0.78 + Math.random() * 0.22).toFixed(2);
-            document.getElementById('headerGradient').textContent = (1.1 + Math.random() * 0.3).toFixed(2) + 'e-5';
-            document.getElementById('headerLoad').textContent = Math.floor(45 + Math.random() * 35) + '%';
+            document.getElementById('hdrT').textContent = (0.78 + Math.random() * 0.22).toFixed(2);
+            document.getElementById('hdrGrad').textContent = (1.1 + Math.random() * 0.3).toFixed(2) + 'e-5';
+            document.getElementById('hdrLoad').textContent = Math.floor(45 + Math.random() * 35) + '%';
 
             if (testBodies.length) {
                 const avg = testBodies.reduce((s, b) => s + b.position.length(), 0) / testBodies.length;
                 if (avg > 0.1) {
                     const f = Math.exp(-massMultiplier / (avg * fieldStrength + 0.01));
-                    document.getElementById('fieldIntensity').textContent = f.toFixed(5);
-                    document.getElementById('timeDilation').textContent = (1 / f).toFixed(6);
+                    document.getElementById('statT').textContent = f.toFixed(5);
+                    document.getElementById('statDil').textContent = (1 / f).toFixed(6);
                     const acc = (G * massMultiplier) / (avg * avg + 0.01);
-                    document.getElementById('gradientMag').textContent = acc.toFixed(2) + ' m/s²';
+                    document.getElementById('statAcc').textContent = acc.toFixed(2) + ' m/s²';
                 }
             }
         }
 
-        // ============================================================
-        // BOOT
-        // ============================================================
+        // ─── Boot ───
         window.addEventListener('load', () => {
-            const progress = document.getElementById('loadingProgress');
-            let p = 0;
-            const iv = setInterval(() => {
-                p += 2 + Math.random() * 3;
-                if (p > 100) p = 100;
-                progress.style.width = p + '%';
-                if (p >= 100) {
-                    clearInterval(iv);
-                    setTimeout(() => {
-                        document.getElementById('loadingOverlay').classList.add('hidden');
-                        initSimulation();
-                    }, 280);
-                }
-            }, 28);
+            const overlay = document.createElement('div');
+            overlay.style.cssText =
+                'position:fixed;inset:0;background:#05070a;z-index:9999;display:flex;align-items:center;justify-content:center;font-family:Orbitron;color:#00d4ff;font-size:0.9rem;letter-spacing:0.2em;';
+            overlay.textContent = 'INITIALIZING TFCD...';
+            document.body.appendChild(overlay);
+            setTimeout(() => {
+                overlay.remove();
+                initScene();
+                setTimeout(onResize, 100);
+            }, 600);
         });
 
         document.addEventListener('visibilitychange', () => {
@@ -2026,6 +1290,5 @@
             if (renderer) renderer.dispose();
         });
     </script>
-
 </body>
 </html>
